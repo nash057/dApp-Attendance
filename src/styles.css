@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 75px;
+    padding: 20px;
+    border-bottom: 3px solid;
+    background-color: lightgrey;
+}
+
+.logo {
+    height: 70px;
+}
+
+.headerText {
+    margin-left: 15px;
+}
