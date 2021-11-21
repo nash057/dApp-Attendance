@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,53 +10,50 @@
 
     <!-- Bootstrap -->
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  </head>
-  <body>
-      <div class="header">
-        <img class="logo" src="assets/classbook.png" alt="Klassenbuch logo"/>
-        <h1 class="headerText">Klassenbuch - dezentral</h1>
-        <span id="accountText"></span>
-        <span id="account"></span>
-      </div>
-      <div class="content">
-        <div class="generateClassContainer">
-          <form class="generateClassForm" onSubmit="App.addClass(); return false;">
+</head>
+<body>
+<div class="header">
+    <img class="logo" src="assets/classbook.png" alt="Klassenbuch logo"/>
+    <h1 class="headerText">Klassenbuch - dezentral</h1>
+    <span id="accountText"></span>
+    <span id="account"></span>
+</div>
+<div class="content">
+    <div class="generateClassContainer">
+        <form class="generateClassForm" onSubmit="App.addClass(); return false;">
             <label for="className">Klasse:</label>
             <input type="text" id="className" name="className">
             <label for="teacherName">Lehrer:</label>
             <input type="text" id="teacherName" name="teacherName">
             <input type="submit" id="submitButton" name="submitButton" value="Klasse anlegen">
-          </form>
-        </div>
-        <div class="classActionContainer">
-          <form class="selectClassForm">
+        </form>
+    </div>
+    <div class="classActionContainer">
+        <form class="selectClassForm">
             <label for="classes">Klasse auswählen:</label>
-            <select name="classes" id="classes">
-              <option value="10">10IT20</option>
-              <option value="11">11IT20</option>
-            </select>
-          </form>
-          <div class="classData">
-            <label>Klassenname</label>
-            <label>Lehrer</label>
-          </div>
-          <form class="selectClassForm">
+            <select name="classes" id="classes" onchange="App.classSelectionChange(this.value)"></select>
+        </form>
+        <div class="classData">
+            <label id="classNameLabel">Klassenname</label>
+            <label id="classTeacherLabel">Lehrer</label>
+        </div>
+        <form class="selectClassForm">
             <label for="presences">Anwesenheit auswählen:</label>
             <select name="presences" id="presences">
-              <option value="11.11">11.11.2021</option>
-              <option value="18.11">18.11.2021</option>
-              <option value="neu">neue Anwensenheit</option>
+                <option value="11.11">11.11.2021</option>
+                <option value="18.11">18.11.2021</option>
+                <option value="neu">neue Anwensenheit</option>
             </select>
-          </form>
-        </div>
-      </div>
+        </form>
+    </div>
+</div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="vendor/web3/dist/web3.min.js"></script>
-    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="vendor/@truffle/contract/dist/truffle-contract.min.js"></script>
-    <script src="app.js"></script>
-  </body>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="vendor/web3/dist/web3.min.js"></script>
+<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="vendor/@truffle/contract/dist/truffle-contract.min.js"></script>
+<script src="app.js"></script>
+</body>
 </html>

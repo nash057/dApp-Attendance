@@ -1,7 +1,7 @@
 pragma solidity ^0.5.0;
 
 contract Classbook {
-  uint classCount = 0;
+  uint public classCount = 0;
 
   struct Class {
     uint id;
