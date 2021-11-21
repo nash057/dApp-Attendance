@@ -13,9 +13,42 @@
   </head>
   <body>
       <div class="header">
-          <img class="logo" src="assets/classbook.png" alt="Klassenbuch logo"/>
-          <h1 class="headerText">Klassenbuch - dezentral</h1>
-          <span id="account"></span>
+        <img class="logo" src="assets/classbook.png" alt="Klassenbuch logo"/>
+        <h1 class="headerText">Klassenbuch - dezentral</h1>
+        <span id="accountText"></span>
+        <span id="account"></span>
+      </div>
+      <div class="content">
+        <div class="generateClassContainer">
+          <form class="generateClassForm" onSubmit="App.addClass(); return false;">
+            <label for="className">Klasse:</label>
+            <input type="text" id="className" name="className">
+            <label for="teacherName">Lehrer:</label>
+            <input type="text" id="teacherName" name="teacherName">
+            <input type="submit" id="submitButton" name="submitButton" value="Klasse anlegen">
+          </form>
+        </div>
+        <div class="classActionContainer">
+          <form class="selectClassForm">
+            <label for="classes">Klasse auswählen:</label>
+            <select name="classes" id="classes">
+              <option value="10">10IT20</option>
+              <option value="11">11IT20</option>
+            </select>
+          </form>
+          <div class="classData">
+            <label>Klassenname</label>
+            <label>Lehrer</label>
+          </div>
+          <form class="selectClassForm">
+            <label for="presences">Anwesenheit auswählen:</label>
+            <select name="presences" id="presences">
+              <option value="11.11">11.11.2021</option>
+              <option value="18.11">18.11.2021</option>
+              <option value="neu">neue Anwensenheit</option>
+            </select>
+          </form>
+        </div>
       </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
