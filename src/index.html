@@ -48,20 +48,72 @@
         <div class="classData">
             <label id="classNameLabel">Klassenname</label>
             <label id="classTeacherLabel">Lehrer</label>
-            <br>
-            <label id="student1Label">Schüler 1</label>
-            <label id="student2Label">Schüler 2</label>
-            <label id="student3Label">Schüler 3</label>
-            <label id="student4Label">Schüler 4</label>
-            <label id="student5Label">Schüler 5</label>
         </div>
         <form class="selectClassForm">
-            <label for="presences">Anwesenheit auswählen:</label>
-            <select name="presences" id="presences">
+            <label for="attendance">Anwesenheit auswählen:</label>
+            <select name="attendance" id="attendance">
                 <option value="11.11">11.11.2021</option>
                 <option value="18.11">18.11.2021</option>
-                <option value="neu">neue Anwensenheit</option>
+                <option value="new">neue Anwensenheit</option>
             </select>
+        </form>
+    </div>
+    <div class="attendanceContainer">
+        <form class="attendanceForm">
+            <div class="attendanceFormHeader">
+                <div class="dateInputElement">
+                    <label for="dateInput">Anwesenheitsdatum:</label>
+                    <input type="text" id="dateInput">
+                </div>
+                <input type="button" id="saveAttendanceButton" value="Speichern">
+            </div>
+
+            <table class="table">
+                <tr>
+                    <th class="tableHeader">Name</th>
+                    <th class="tableHeader">Anwesend</th>
+                </tr>
+                <tr>
+                    <td class="tableCell"><label id="student1Label"></label></td>
+                    <td class="tableCell">
+                        <label>
+                            <input id="student1TableCheckbox" type="checkbox">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableCell"><label id="student2Label"></label></td>
+                    <td class="tableCell">
+                        <label>
+                            <input id="student2TableCheckbox" type="checkbox">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableCell"><label id="student3Label"></label></td>
+                    <td class="tableCell">
+                        <label>
+                            <input id="student3TableCheckbox" type="checkbox">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableCell"><label id="student4Label"></label></td>
+                    <td class="tableCell">
+                        <label>
+                            <input id="student4TableCheckbox" type="checkbox">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableCell"><label id="student5Label"></label></td>
+                    <td class="tableCell">
+                        <label>
+                            <input id="student5TableCheckbox" type="checkbox">
+                        </label>
+                    </td>
+                </tr>
+            </table>
         </form>
     </div>
 </div>

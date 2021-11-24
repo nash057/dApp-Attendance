@@ -9,7 +9,7 @@
 }
 
 .logo {
-    height: 70px;
+    height: 65px;
 }
 
 .headerText {
@@ -39,9 +39,10 @@
 .classActionContainer {
     width: 275px;
     border-right: 2px solid black;
+    background-color: lightyellow;
 }
 
-.generateClassForm, .selectClassForm {
+.generateClassForm, .selectClassForm, .attendanceForm {
     margin: 25px;
     display: flex;
     flex-direction: column;
@@ -61,4 +62,45 @@
     flex-direction: column;
     margin: 25px;
     font-size: 25px;
+}
+
+.attendanceContainer {
+    background-color: lightgray;
+    width: 100%;
+}
+
+.attendanceFormHeader {
+    display: flex;
+    justify-content: stretch;
+    flex-direction: row;
+}
+
+#dateInput {
+    width: 200px;
+}
+
+.dateInputElement {
+    display: flex;
+    flex-direction: column;
+}
+
+#saveAttendanceButton {
+    width: 200px;
+    margin-left: auto;
+    background-color: grey;
+}
+
+.table {
+    margin-top: 25px;
+    background-color: lightyellow;
+    text-align: center;
+}
+
+.table .tableHeader{
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+.table .tableCell{
+    border: 2px solid black;
 }
