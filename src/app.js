@@ -1,6 +1,7 @@
 App = {
     contracts: {},
     classes: [],
+    attendance: [],
 
     load: async () => {
         await App.loadMetaMask();
@@ -33,6 +34,8 @@ App = {
     render: async () => {
         await App.renderAccount();
         await App.renderClasses();
+        await App.renderAttendance();
+        await App.renderAttendanceView('new');
     },
 
     renderAccount: async () => {
@@ -66,7 +69,6 @@ App = {
             });
             $('#classes').append(new Option(schoolClassName, schoolClassId));
         }
-        console.log(App.classes)
         $('#classNameLabel').html(App.classes[0].className);
         $('#classTeacherLabel').html(App.classes[0].classTeacher);
 
@@ -87,6 +89,9 @@ App = {
         $('#student3Label').html(App.classes[value].studentName3);
         $('#student4Label').html(App.classes[value].studentName4);
         $('#student5Label').html(App.classes[value].studentName5);
+
+        await App.renderAttendanceView('new');
+        await App.setAttendanceCombobox();
     },
 
     addClass: async () => {
@@ -102,6 +107,95 @@ App = {
         if (className && teacherName) {
             await App.classbook.createClass(className, teacherName,
                 student1Name, student2Name, student3Name, student4Name, student5Name, {from: App.account});
+
+            this.location.reload();
+        }
+    },
+
+    renderAttendance: async () => {
+        const attendanceCount = await App.classbook.attendanceCount();
+
+        for (let i = 1; i <= attendanceCount.toNumber(); i++) {
+            const attendance = await App.classbook.attendance(i);
+            const attendanceId = attendance[0].toNumber();
+            const classId = attendance[1].toNumber();
+            let date = attendance[2].toNumber();
+            const student1Attendance = attendance[3];
+            const student2Attendance = attendance[4];
+            const student3Attendance = attendance[5];
+            const student4Attendance = attendance[6];
+            const student5Attendance = attendance[7];
+
+            date = new Date(date * 1000);
+
+            App.attendance.push({
+                attendanceId: attendanceId,
+                classId: classId,
+                date: date,
+                student1Attendance: student1Attendance,
+                student2Attendance: student2Attendance,
+                student3Attendance: student3Attendance,
+                student4Attendance: student4Attendance,
+                student5Attendance: student5Attendance
+            });
+        }
+
+        await App.setAttendanceCombobox();
+    },
+
+    setAttendanceCombobox: async () => {
+        let selectedClassId = $('#classes').val();
+        selectedClassId = parseInt(selectedClassId);
+        if (isNaN(selectedClassId)) {
+            return null;
+        }
+        $("#attendance option").remove();
+        $('#attendance').append(new Option('neue Anwensenheit', 'new'));
+        App.attendance.forEach(element => {
+            if (element.classId === selectedClassId) {
+                $('#attendance').append(new Option(element.date.toLocaleDateString(), element.attendanceId));
+            }
+        })
+    },
+
+    renderAttendanceView: async (value) => {
+        if (value !== 'new') {
+            $('.attendanceForm :input').prop("disabled", true);
+            value = parseInt(value);
+            if (isNaN(value)) {
+                return null;
+            }
+            value --;
+            const now = App.attendance[value].date;
+            const day = ("0" + now.getDate()).slice(-2);
+            const month = ("0" + (now.getMonth() + 1)).slice(-2);
+            const today = now.getFullYear()+"-"+(month)+"-"+(day);
+            $('#dateInput').val(today);
+            $('#student1TableCheckbox').prop('checked', App.attendance[value].student1Attendance);
+            $('#student2TableCheckbox').prop('checked', App.attendance[value].student2Attendance);
+            $('#student3TableCheckbox').prop('checked', App.attendance[value].student3Attendance);
+            $('#student4TableCheckbox').prop('checked', App.attendance[value].student4Attendance);
+            $('#student5TableCheckbox').prop('checked', App.attendance[value].student5Attendance);
+        }
+        else {
+            $('.attendanceForm :input').prop("disabled", false);
+            $('.attendanceForm').trigger("reset");
+        }
+    },
+
+    addAttendance: async () => {
+        const classId = $('#classes').val();
+        let date = new Date($('#dateInput').val());
+        const student1 = $('#student1TableCheckbox').is(":checked");
+        const student2 = $('#student2TableCheckbox').is(":checked");
+        const student3 = $('#student3TableCheckbox').is(":checked");
+        const student4 = $('#student4TableCheckbox').is(":checked");
+        const student5 = $('#student5TableCheckbox').is(":checked");
+        if (!isNaN(date.getTime())) {
+            date = date.getTime() / 1000;
+
+            await App.classbook.createAttendance(classId, date,
+                student1, student2, student3, student4, student5, {from: App.account});
 
             this.location.reload();
         }
