@@ -2,7 +2,7 @@
 ### About the project
 
 ---
-This Project is a prototype of a decentralized classbook.
+This project is a prototype of a decentralized classbook.
 It was developed in the context of a school project.
 The app saves classes with students and the attendance of student by date decentralized on the blockchain. The classes and attendances can be added and displayed via a frontend.
 
@@ -19,6 +19,6 @@ The app saves classes with students and the attendance of student by date decent
 ### Use app via frontend
 
 ---
-1. Install [MetaMask](https://metamask.io/) Browser extension
+1. Install [MetaMask](https://metamask.io/) browser extension
 2. Import account into MetaMask wallet via private key
 3. Have fun testing the app 😀
