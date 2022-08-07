@@ -150,7 +150,7 @@ App = {
             return null;
         }
         $("#attendance option").remove();
-        $('#attendance').append(new Option('neue Anwensenheit', 'new'));
+        $('#attendance').append(new Option('New Presence', 'new'));
         App.attendance.forEach(element => {
             if (element.classId === selectedClassId) {
                 $('#attendance').append(new Option(element.date.toLocaleDateString(), element.attendanceId));

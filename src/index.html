@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Klassenbuch</title>
+    <title>AttendanceDapp</title>
     <link rel="stylesheet" href="styles.css">
 
     <!-- Bootstrap -->
@@ -14,43 +14,43 @@
 <body>
 <div class="header">
     <img class="logo" src="assets/classbook.png" alt="Klassenbuch logo"/>
-    <h1 class="headerText">Klassenbuch - dezentral</h1>
+    <h1 class="headerText">Decentralized Attendance Book</h1>
     <span id="accountText"></span>
     <span id="account"></span>
 </div>
 <div class="content">
     <div class="generateClassContainer">
         <form class="generateClassForm" onSubmit="App.addClass(); return false;">
-            <label for="className">Klasse:</label>
+            <label for="className">Class:</label>
             <input type="text" id="className" name="className">
-            <label for="teacherName">Lehrer:</label>
+            <label for="teacherName">Teacher:</label>
             <input type="text" id="teacherName" name="teacherName">
             <br>
-            <label for="student1">Schüler 1:</label>
+            <label for="student1">Student 1:</label>
             <input type="text" id="student1" name="student1">
-            <label for="student2">Schüler 2:</label>
+            <label for="student2">Student 2:</label>
             <input type="text" id="student2" name="student2">
-            <label for="student3">Schüler 3:</label>
+            <label for="student3">Student 3:</label>
             <input type="text" id="student3" name="student3">
-            <label for="student4">Schüler 4:</label>
+            <label for="student4">Student 4:</label>
             <input type="text" id="student4" name="student4">
-            <label for="student5">Schüler 5:</label>
+            <label for="student5">Student 5:</label>
             <input type="text" id="student5" name="student5">
             <br>
-            <input type="submit" id="submitButton" name="submitButton" value="Klasse anlegen">
+            <input type="submit" id="submitButton" name="submitButton" value="Create Class">
         </form>
     </div>
     <div class="classActionContainer">
         <form class="selectClassForm">
-            <label for="classes">Klasse auswählen:</label>
+            <label for="classes">Select Class:</label>
             <select name="classes" id="classes" onchange="App.classSelectionChange(this.value)"></select>
         </form>
         <div class="classData">
-            <label id="classNameLabel">Klassenname</label>
-            <label id="classTeacherLabel">Lehrer</label>
+            <label id="classNameLabel">Class</label>
+            <label id="classTeacherLabel">Teacher</label>
         </div>
         <form class="selectClassForm">
-            <label for="attendance">Anwesenheit auswählen:</label>
+            <label for="attendance">Date of attendance:</label>
             <select name="attendance" id="attendance" onchange="App.renderAttendanceView(this.value)">
             </select>
         </form>
@@ -59,16 +59,16 @@
         <form id="myAttendanceForm" class="attendanceForm" onSubmit="App.addAttendance(); return false;">
             <div class="attendanceFormHeader">
                 <div class="dateInputElement">
-                    <label for="dateInput">Anwesenheitsdatum:</label>
+                    <label for="dateInput">Date of attendance:</label>
                     <input type="date" id="dateInput" name="dateInput">
                 </div>
-                <input type="submit" id="saveAttendanceButton" name="attendanceSubmit" value="Speichern">
+                <input type="submit" id="saveAttendanceButton" name="attendanceSubmit" value="Save">
             </div>
 
             <table class="table">
                 <tr>
                     <th class="tableHeader">Name</th>
-                    <th class="tableHeader">Anwesend</th>
+                    <th class="tableHeader">Present</th>
                 </tr>
                 <tr>
                     <td class="tableCell"><label id="student1Label"></label></td>

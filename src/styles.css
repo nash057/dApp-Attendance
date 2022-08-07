@@ -5,7 +5,12 @@
     height: 75px;
     padding: 20px;
     border-bottom: 3px solid;
-    background-color: orange;
+    background-color: rgb(64, 64, 244);
+}
+.header h1 {
+    position: relative;
+    left: 25rem;
+    text-align: center;
 }
 
 .logo {
